@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Клімат-контроль</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="noise"></div>
+
+  <header>
+    <div class="header-line"></div>
+    <h1>КЛІМАТ<span>КОНТРОЛЬ</span></h1>
+    <p class="subtitle">СИСТЕМА УПРАВЛІННЯ СЕРЕДОВИЩЕМ</p>
+    <div class="header-line"></div>
+  </header>
+
+  <main>
+    <div class="card" id="card-temp">
+      <div class="card-label">01 / ТЕМПЕРАТУРА</div>
+      <div class="card-icon">🌡</div>
+      <div class="value-wrap">
+        <button class="btn btn-minus" data-target="temp" aria-label="Зменшити температуру">−</button>
+        <div class="value-display">
+          <span class="value" id="val-temp">19</span>
+          <span class="unit">°C</span>
+        </div>
+        <button class="btn btn-plus" data-target="temp" aria-label="Збільшити температуру">+</button>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="bar-temp"></div></div>
+    </div>
+
+    <div class="card" id="card-fan">
+      <div class="card-label">02 / ВЕНТИЛЯТОР</div>
+      <div class="card-icon" id="fan-icon">⬡</div>
+      <div class="value-wrap">
+        <button class="btn btn-minus" data-target="fan" aria-label="Зменшити швидкість">−</button>
+        <div class="value-display">
+          <span class="value" id="val-fan">3</span>
+          <span class="unit">ОБ/С</span>
+        </div>
+        <button class="btn btn-plus" data-target="fan" aria-label="Збільшити швидкість">+</button>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="bar-fan"></div></div>
+    </div>
+
+    <div class="card" id="card-hum">
+      <div class="card-label">03 / ВОЛОГІСТЬ</div>
+      <div class="card-icon">💧</div>
+      <div class="value-wrap">
+        <button class="btn btn-minus" data-target="hum" aria-label="Зменшити вологість">−</button>
+        <div class="value-display">
+          <span class="value" id="val-hum">53</span>
+          <span class="unit">%</span>
+        </div>
+        <button class="btn btn-plus" data-target="hum" aria-label="Збільшити вологість">+</button>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="bar-hum"></div></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="status-bar">
+      <span class="status-label">АКТИВНІ НАЛАШТУВАННЯ</span>
+      <span class="status-dot"></span>
+      <span class="status-text" id="status-text"></span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

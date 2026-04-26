@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Клімат-контроль</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="app">
+    <header class="header">
+      <span class="header__label">СИСТЕМА</span>
+      <h1 class="header__title">Клімат-контроль</h1>
+    </header>
+
+    <main class="controls">
+
+      <!-- Температура -->
+      <div class="card" id="card-temp">
+        <div class="card__icon">🌡️</div>
+        <div class="card__name">Температура</div>
+        <div class="card__row">
+          <button class="btn btn--minus" onclick="change('temp', -1)">−</button>
+          <div class="card__value" id="val-temp">19<span class="card__unit">°C</span></div>
+          <button class="btn btn--plus" onclick="change('temp', +1)">+</button>
+        </div>
+        <div class="card__range">від −20 до 50</div>
+      </div>
+
+      <!-- Вентилятор -->
+      <div class="card" id="card-fan">
+        <div class="card__icon">
+          <svg class="fan-svg" id="fan-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <g id="fan-blades">
+              <!-- Лопать 1 -->
+              <path d="M40 40 Q38 20 50 10 Q60 5 62 18 Q64 30 40 40Z" fill="currentColor" opacity="0.9"/>
+              <!-- Лопать 2 -->
+              <path d="M40 40 Q58 44 66 58 Q70 68 58 72 Q47 75 40 40Z" fill="currentColor" opacity="0.9"/>
+              <!-- Лопать 3 -->
+              <path d="M40 40 Q22 36 14 22 Q10 12 22 8 Q33 5 40 40Z" fill="currentColor" opacity="0.7"/>
+              <!-- Лопать 4 -->
+              <path d="M40 40 Q42 62 28 70 Q18 75 14 64 Q10 52 40 40Z" fill="currentColor" opacity="0.7"/>
+            </g>
+            <circle cx="40" cy="40" r="7" fill="var(--accent)" />
+            <circle cx="40" cy="40" r="3" fill="var(--bg)" />
+          </svg>
+        </div>
+        <div class="card__name">Швидкість вентилятора</div>
+        <div class="card__row">
+          <button class="btn btn--minus" onclick="change('fan', -1)">−</button>
+          <div class="card__value" id="val-fan">3<span class="card__unit"> / 10</span></div>
+          <button class="btn btn--plus" onclick="change('fan', +1)">+</button>
+        </div>
+        <div class="card__range">від 0 до 10</div>
+      </div>
+
+      <!-- Вологість -->
+      <div class="card" id="card-hum">
+        <div class="card__icon">💧</div>
+        <div class="card__name">Вологість</div>
+        <div class="card__row">
+          <button class="btn btn--minus" onclick="change('hum', -1)">−</button>
+          <div class="card__value" id="val-hum">53<span class="card__unit">%</span></div>
+          <button class="btn btn--plus" onclick="change('hum', +1)">+</button>
+        </div>
+        <div class="card__range">від 0 до 100</div>
+      </div>
+
+    </main>
+
+    <footer class="status">
+      <span class="status__label">ЗАРАЗ</span>
+      <p class="status__line" id="status-line">
+        Температура: 19°C &nbsp;|&nbsp; Вентилятор: 3/10 &nbsp;|&nbsp; Вологість: 53%
+      </p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
