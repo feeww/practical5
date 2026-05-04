@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Валютний інформер</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            font-family: Arial;
+            background: #f5f5f5;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-panel {
+            width: 380px;
+            max-height: 90vh;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .right-panel {
+            flex: 1;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .currency-list {
+            list-style: none;
+        }
+
+        .currency-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .converter-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .converter-row input,
+        .converter-row select {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            min-width: 0;
+        }
+
+        .converter-row input[readonly] {
+            background: #f9f9f9;
+        }
+
+        .arrow {
+            font-size: 20px;
+            color: #888;
+            flex-shrink: 0;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            .left-panel {
+                width: 100%;
+                max-height: 300px;
+            }
+
+            .converter-row {
+                flex-wrap: wrap;
+            }
+
+            .converter-row input,
+            .converter-row select {
+                min-width: 120px;
+            }
+
+            .arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .panel {
+                padding: 16px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            .converter-row {
+                flex-direction: column;
+            }
+
+            .converter-row input,
+            .converter-row select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="panel left-panel">
+        <h2>Курс валют на <span id="current-date"></span></h2>
+        <ul class="currency-list" id="currency-list">
+            <li class="currency-item">Завантаження...</li>
+        </ul>
+    </div>
+
+    <div class="panel right-panel">
+        <h2>Конвертер валют</h2>
+
+        <div class="converter-row">
+            <input type="number" id="amount-foreign" placeholder="Сума" min="0">
+            <input list="currency-list-1" id="currency-input-1" placeholder="Виберіть валюту">
+            <datalist id="currency-list-1"></datalist>
+            <span class="arrow">→</span>
+            <input type="number" id="amount-uah" placeholder="Гривні" readonly>
+        </div>
+
+        <hr>
+
+        <div class="converter-row">
+            <input type="number" id="amount-uah-2" placeholder="Гривні" min="0">
+            <span class="arrow">→</span>
+            <input list="currency-list-2" id="currency-input-2" placeholder="Виберіть валюту">
+            <datalist id="currency-list-2"></datalist>
+            <input type="number" id="amount-foreign-2" placeholder="Сума" readonly>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+
+</html>
