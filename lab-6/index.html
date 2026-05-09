@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Валютний інформер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="panel left-panel">
+        <h2>Курс валют на <span id="current-date"></span></h2>
+        <ul class="currency-list" id="currency-list">
+            <li class="currency-item">Завантаження...</li>
+        </ul>
+    </div>
+
+    <div class="panel right-panel">
+        <h2>Конвертер валют</h2>
+
+        <div class="converter-row">
+            <input type="number" id="amount-foreign" placeholder="Сума" min="0">
+            <input list="currency-list-1" id="currency-input-1" placeholder="Виберіть валюту">
+            <datalist id="currency-list-1"></datalist>
+            <span class="arrow">→</span>
+            <input type="number" id="amount-uah" placeholder="Гривні" readonly>
+        </div>
+
+        <div class="converter-row">
+            <input type="number" id="amount-uah-2" placeholder="Гривні" min="0">
+            <span class="arrow">→</span>
+            <input list="currency-list-2" id="currency-input-2" placeholder="Виберіть валюту">
+            <datalist id="currency-list-2"></datalist>
+            <input type="number" id="amount-foreign-2" placeholder="Сума" readonly>
+        </div>
+
+        <hr>
+
+        <h3 id="history-title">Оберіть валюту зі списку зліва</h3>
+
+        <div class="date-range" id="date-range" style="display:none;">
+            <label>Від: <input type="date" id="date-from"></label>
+            <label>До: <input type="date" id="date-to"></label>
+            <button id="load-range">Показати</button>
+        </div>
+
+        <div id="history-output">
+            <p>Виберіть валюту зі списку зліва</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
