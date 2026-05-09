@@ -6,6 +6,10 @@ document.getElementById("current-date").textContent =
 
 const apiUrl = "https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange";
 
+const todayStr = new Date().toISOString().slice(0, 10);
+document.getElementById("date-from").max = todayStr;
+document.getElementById("date-to").max = todayStr;
+
 function getDatesBetween(from, to) {
     const dates = [];
     const current = new Date(from);
@@ -125,6 +129,8 @@ function renderList(data) {
 document.getElementById("load-range").addEventListener("click", () => {
     const from = document.getElementById("date-from").value;
     const to = document.getElementById("date-to").value;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
     if (!from || !to) {
         alert("Оберіть обидві дати");
@@ -133,6 +139,16 @@ document.getElementById("load-range").addEventListener("click", () => {
 
     if (new Date(from) > new Date(to)) {
         alert("Дата 'Від' не може бути пізніше за 'До'");
+        return;
+    }
+
+    if (new Date(from) > today) {
+        alert("Дата 'Від' не може бути в майбутньому");
+        return;
+    }
+
+    if (new Date(to) > today) {
+        alert("Дата 'До' не може бути в майбутньому");
         return;
     }
 
